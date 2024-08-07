@@ -18,7 +18,7 @@
     "contract:bind": "node scripts/bind.cjs",
     "contract:unbind": "node scripts/unbind.cjs",
     "contract:deploy": "node scripts/contract-deploy.cjs --name Counter",
-    "contract:build": "solc -o ./build/contract/ --via-ir --abi --storage-layout --bin ./contracts/*.sol --overwrite",
+    "contract:build": "powershell -Command \"Get-ChildItem -Path './contracts' -Filter *.sol | ForEach-Object { solc -o ./build/contract/ --via-ir --abi --storage-layout --bin $_.FullName --overwrite }\"",
     "build": "npm run contract:build && npm run aspect:gen && npm run aspect:build"
   },
   "keywords": [],
